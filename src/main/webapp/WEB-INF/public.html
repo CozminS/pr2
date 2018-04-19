@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="s">
+    <input type="text" id="search" name="search" placeholder="moneda title" />
+    <input type="button" id="bSearch" value="Search"  onClick="searchMoneda()"/>
+</div>
+
+<div id ="result">
+
+    <!--<a href="details.jsp?id=1">-->
+    <!--<img src="posters/brave.jpeg" alt="brave">-->
+    <!--</a>-->
+    <!--<a href="details.jsp?id=2">-->
+    <!--<img src="posters/martian.jpeg" alt="matian">-->
+    <!--</a>-->
+    <!--<a href="details.jsp?id=3">-->
+    <!--<img src="posters/titanic.jpeg" alt="titanic">-->
+    <!--</a>-->
+
+</div>
+
+<script>
+
+    function listOfAlbum() {
+        $.ajax({
+            url: 'tl?action=read'
+        }).done(function (response) {
+            putToDoInHTML(response.monede);
+        });
+    }
+    function putToDoInHTML(todo) {
+
+        var list = document.getElementById('result');
+        var listHtml = '';
+
+        for (var i = 0; i < todo.length; i++) {
+            var task = todo[i];
+            //var checked = task.done ? ' checked=""' : '';
+            var taskHtml =
+                '<a href="details.jsp?urly=' + '&urlp='+ task.imagini +'"> <img src="imagini/'+ task.imagini+'"></a>'
+               // <img alt="imagine exemplu" src="/assets_tutorials/img/image.jpg"  />
+            listHtml += taskHtml;
+        }
+        list.innerHTML = listHtml;
+
+    }
+
+    listOfAlbum();
+
+</script>
+
+</body>
+</html>
