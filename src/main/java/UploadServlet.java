@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 
 @WebServlet(name = "uploadServlet", urlPatterns = { "/upload" }, loadOnStartup = 1) // loads when tomcat starts
 
@@ -17,6 +19,7 @@ import java.io.IOException;
         maxRequestSize = 2000*1024*1024 // 20 MB , this is the total max size for a request
 )
 public class UploadServlet extends HttpServlet {
+
     private static final String UPLOAD_DIR = "imagini";
 
 
@@ -24,7 +27,7 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // optional, in case we write somemthing on output
+        // optional, in case we write something on output
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
@@ -32,7 +35,7 @@ public class UploadServlet extends HttpServlet {
         String applicationPath = request.getServletContext().getRealPath("");
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
         String fileName=null;
-        String imagine=null;
+        String numeimg=null;
         // creates upload folder if it does not exists
         File uploadFolder = new File(uploadFilePath);
         if (!uploadFolder.exists()) {
@@ -57,7 +60,7 @@ public class UploadServlet extends HttpServlet {
                     // actual write on the disk
                     part.write(uploadFilePath + File.separator + fileName);
                     if(fileName!=null)
-                        imagine = fileName;
+                        numeimg = fileName;
 
 //                    // feel free to remove the following, eventually in the end (after for ends) redirect to some url
 //                    PrintWriter writer = response.getWriter();
@@ -73,35 +76,24 @@ public class UploadServlet extends HttpServlet {
 
         }
 
-     /*   String name = request.getParameter("name");
-        String youtube = request.getParameter("youtube");
-
-
-        System.out.println("name="+name+", youtube:"+youtube+"filename="+nameFileToSaveInDB);
-
-
-        // apelez db-ul si scriu cele 3 valori in db
-
-        DBO d = new DBO();
-
-        d.insertMovie(name,youtube, nameFileToSaveInDB);
-
-        response.sendRedirect("public.html"); */
-
         String moneda = request.getParameter("moneda");
         String descriere = request.getParameter("descriere");
 
 
-        System.out.println("moneda="+moneda+", descriere:"+descriere+"imagine="+imagine);
+        System.out.println("moneda="+moneda+", imagine:"+numeimg+"descriere="+descriere);
 
 
         // apelez db-ul si scriu cele 3 valori in db
 
         DBO d = new DBO();
 
-        d.insertMoneda(moneda,descriere, imagine);
+        d.insertAlbum(moneda,numeimg, descriere);
 
         response.sendRedirect("public.html");
 
+
+
     }
 }
+
+

@@ -6,6 +6,7 @@ public class DBO {
     public final static String URL = "jdbc:postgresql://54.93.65.5:5432/cozmin7";
     public final static String USERNAME = "fasttrackit_dev";
     public final static String PASSWORD = "fasttrackit_dev";
+
     /* -1 daca nu am gasit , id-ul daca am gasit */
     public int login (String user, String pwd) {
 
@@ -84,11 +85,11 @@ public class DBO {
     public static void main(String[] args) {
 
         DBO d = new DBO();
-        int value = d.login("ionel", "password1");
+        int value = d.login("cozmin", "parola1234");
         System.out.println(value);
     }
 
-    public void insertMoneda(String moneda, String imagine, String descriere) {
+    public void insertAlbum(String moneda, String numeimg, String descriere) {
         int found = -1;
         try {
             Class.forName("org.postgresql.Driver");
@@ -96,9 +97,9 @@ public class DBO {
             // 3. obtain a connection
             Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            PreparedStatement pSt = conn.prepareStatement("INSERT INTO album (moneda,imagine,descriere,data) VALUES (?,?,?, now())");
+            PreparedStatement pSt = conn.prepareStatement("INSERT INTO album (moneda,imagine,descriere, data) VALUES (?,?,?, now())");
             pSt.setString(1, moneda);
-            pSt.setString(2, imagine);
+            pSt.setString(2, numeimg);
             pSt.setString(3, descriere);
 
 
@@ -116,7 +117,5 @@ public class DBO {
 
 
     }
-
 }
-
 

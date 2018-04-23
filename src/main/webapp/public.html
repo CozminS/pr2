@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>public</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        h1 {
+            text-shadow: 3px 2px green ;
+            background-color: olive;
+            /*width: 100%;
+            height: 100%;*/
+            background-position: top right;
+            background-size:cover;
+            color: black;
+        }
+        div.s{
+            text-align: right;
+        }
+
+
+    </style>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<h1>Album numismatic</h1>
+
+
+
+<div class="s">
+    <input type="text" id="search" name="search" placeholder="monede" />
+    <input type="button" id="bSearch" value="Search"  onClick="searchMonede()"/>
+</div>
+
+<div id ="result">
+
+    <!--<a href="details.jsp?id=1">-->
+    <!--<img src="/imagini/1 BAN.jpg" alt="1 BAN" style="width:150px;height:200px;border:0;">-->
+    <!--</a>-->
+
+
+</div>
+
+<script>
+
+    function listAlbum() {
+        $.ajax({
+            url: 'monede?action=read'
+        }).done(function (response) {
+            putToDoInHTML(response.album);
+        });
+    }
+    function putToDoInHTML(todo) {
+
+        var list = document.getElementById('result');
+        var listHtml = '';
+
+        for (var i = 0; i < todo.length; i++) {
+            var task = todo[i];
+            //var checked = task.done ? ' checked=""' : '';
+            var taskHtml =
+                '<a href="details.jsp?urly='+task.descriere+'&urlp='+ task.poza+'"> <img src="imagini/'+ task.poza+'" style="width:500px;height:500px;border:0;"> </a>'
+            listHtml += taskHtml;
+        }
+        list.innerHTML = listHtml;
+
+    }
+
+    listAlbum();
+
+</script>
+</body>
+</html>

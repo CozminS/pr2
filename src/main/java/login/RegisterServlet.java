@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,9 +26,9 @@ public class RegisterServlet extends HttpServlet {
         if(value!=-1) { // user logat
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
-            System.out.println("LoginServlet: bravoooo  ");
+            System.out.println("LoginServlet: Felicitari  ");
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("admin.html");
 
         }
         else
@@ -42,4 +43,5 @@ public class RegisterServlet extends HttpServlet {
         }
 
     }
+
 }

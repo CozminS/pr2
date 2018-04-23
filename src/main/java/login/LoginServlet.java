@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/login")
-
 public class LoginServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,14 +22,17 @@ public class LoginServlet extends HttpServlet {
         DBO d = new DBO();
         int value = d.login(u, p);
 
-        if (value != -1) { // user logat
+        if(value!=-1) { // user logat
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
-            System.out.println("LoginServlet: bravoooo  ");
+            System.out.println("LoginServlet: Felicitari  ");
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("admin.html");
 
-        } else {
+        }
+        else
+        {
+
             System.out.println("LoginServlet: user/pwd NOT FOUND in db, retry a new one on the UI ");
             String back = "/login.html";
             HttpSession session = request.getSession();
@@ -37,5 +40,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
             dispatcher.forward(request, response);
         }
+
     }
+
 }

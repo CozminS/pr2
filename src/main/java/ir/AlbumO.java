@@ -6,8 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class AlbumO {
+
     private List<AlbumBean> listOfAlbum = new ArrayList<>();
+
+
 
     public List getListOfAlbum() throws ClassNotFoundException, SQLException {
 
@@ -22,7 +27,7 @@ public class AlbumO {
             AlbumBean ir = new AlbumBean();
             ir.setId(rs.getInt("id"));
             ir.setMoneda(rs.getString("moneda"));
-            ir.setImagine(rs.getString("imagine"));
+            ir.setPoza(rs.getString("imagine"));
             ir.setDescriere(rs.getString("descriere"));
             listOfAlbum.add(ir);
         }
@@ -32,5 +37,7 @@ public class AlbumO {
 
         return listOfAlbum;
     }
-
 }
+
+
+

@@ -2,10 +2,7 @@ package ir;
 
 public class AlbumBean {
 
-        private int id;
-        private String moneda;
-        private String imagine;
-        private String descriere;
+
 
     public int getId() { return id; }
 
@@ -15,13 +12,16 @@ public class AlbumBean {
 
     public void setMoneda(String moneda) { this.moneda = moneda; }
 
-    public String getImagine() { return imagine; }
+    public String getPoza() { return poza; }
 
-    public void setImagine(String imagine) { this.imagine = imagine; }
+    public void setPoza(String poza) { this.poza = poza; }
 
     public String getDescriere() { return descriere; }
 
-    public void setDescriere(String descriere) {
-        this.descriere = descriere; }
-}
+    public void setDescriere(String descriere) { this.descriere = descriere; }
 
+    private int id;
+    private String moneda;
+    private String poza;
+    private String descriere;
+}

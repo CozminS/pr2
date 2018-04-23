@@ -10,22 +10,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet("/tl")
-public class JSON extends HttpServlet { @Override
-protected void service(HttpServletRequest req, HttpServletResponse resp) {
 
-    String action = req.getParameter("action");
 
-    if (action != null && action.equals("read"))
-        read(req, resp);
+@WebServlet("/monede")
+public class JSON extends HttpServlet {
 
-}
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) {
+
+        String action = req.getParameter("action");
+
+        if (action != null && action.equals("read"))
+            read(req, resp);
+
+    }
 
 
 
     private void read(HttpServletRequest req, HttpServletResponse resp) {
         //SingleListPersons listQA = SingleListPersons.getInstance();
-       AlbumO listQA = new AlbumO();
+        AlbumO listQA = new AlbumO();
 
         int iduser=-1;
 
@@ -33,7 +37,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) {
 
         JSONObject json = new JSONObject();
         try {
-            json.put("monede", listQA.getListOfAlbum());
+            json.put("album", listQA.getListOfAlbum());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -59,4 +63,3 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) {
         pr.close();
     }
 }
-
