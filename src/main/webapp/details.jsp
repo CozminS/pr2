@@ -7,12 +7,12 @@
 </head>
 <body>
 
-
+<div align="center">
 
 <div id ="result">
 
 
-    <img src="imagini/<%=request.getParameter("urlp")%>" style="width:800px;height:620px;align-content: center" >
+    <img src="imagini/<%=request.getParameter("urlp")%>" style="width:800px;height:620px;" >
     <br>
 
     <p>Detalii</p>

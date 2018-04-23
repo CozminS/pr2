@@ -33,16 +33,10 @@
 
 
 
-<div class="s">
-    <input type="text" id="search" name="search" placeholder="monede" />
-    <input type="button" id="bSearch" value="Search"  onClick="searchMonede()"/>
-</div>
+
 
 <div id ="result">
 
-    <!--<a href="details.jsp?id=1">-->
-    <!--<img src="/imagini/1 BAN.jpg" alt="1 BAN" style="width:150px;height:200px;border:0;">-->
-    <!--</a>-->
 
 
 </div>
@@ -63,7 +57,7 @@
 
         for (var i = 0; i < todo.length; i++) {
             var task = todo[i];
-            //var checked = task.done ? ' checked=""' : '';
+
             var taskHtml =
                 '<a href="details.jsp?urly='+task.descriere+'&urlp='+ task.poza+'"> <img src="imagini/'+ task.poza+'" style="width:500px;height:500px;border:0;"> </a>'
             listHtml += taskHtml;

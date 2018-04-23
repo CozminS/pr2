@@ -23,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
         d.register(u, p);
         int value = d.login(u,p);
 
-        if(value!=-1) { // user logat
+        if(value!=-1) {
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
             System.out.println("LoginServlet: Felicitari  ");

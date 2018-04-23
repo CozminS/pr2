@@ -1,4 +1,4 @@
-package ir;
+package album;
 
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ public class JSON extends HttpServlet {
 
 
     private void read(HttpServletRequest req, HttpServletResponse resp) {
-        //SingleListPersons listQA = SingleListPersons.getInstance();
+
         AlbumO listQA = new AlbumO();
 
         int iduser=-1;

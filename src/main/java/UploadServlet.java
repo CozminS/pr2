@@ -27,48 +27,42 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // optional, in case we write something on output
+
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-        // obtain a path where to store files, we can also use absolute paths it depends on the  permissions
+
         String applicationPath = request.getServletContext().getRealPath("");
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
         String fileName=null;
         String numeimg=null;
-        // creates upload folder if it does not exists
+
         File uploadFolder = new File(uploadFilePath);
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
 
 
-        // write all the files in our upload folder
+
         int counter=0;
         for (Part part : request.getParts()) {
             if (part != null && part.getSize() > 0) {
                 fileName= part.getSubmittedFileName();
                 String contentType = part.getContentType();
 
-//                    // server side validation: allows only JPEG files to be uploaded, feel free to change this behaviour
+
                 if (contentType!=null && contentType.equalsIgnoreCase("image/jpeg")) {
 
 
-                    //make each file name unique
+
                     fileName = System.currentTimeMillis() + fileName;
 
-                    // actual write on the disk
+
                     part.write(uploadFilePath + File.separator + fileName);
                     if(fileName!=null)
                         numeimg = fileName;
 
-//                    // feel free to remove the following, eventually in the end (after for ends) redirect to some url
-//                    PrintWriter writer = response.getWriter();
-//                    writer.append("File successfully uploaded to: "
-//                            + uploadFolder.getAbsolutePath()
-//                            + File.separator
-//                            + fileName
-//                            + "<br>\r\n");
+
                 }
 
 
@@ -83,7 +77,7 @@ public class UploadServlet extends HttpServlet {
         System.out.println("moneda="+moneda+", imagine:"+numeimg+"descriere="+descriere);
 
 
-        // apelez db-ul si scriu cele 3 valori in db
+
 
         DBO d = new DBO();
 

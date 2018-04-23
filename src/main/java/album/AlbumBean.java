@@ -1,4 +1,4 @@
-package ir;
+package album;
 
 public class AlbumBean {
 
