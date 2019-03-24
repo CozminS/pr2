@@ -1,1 +1,1 @@
-This is an ideea for an Numismatic album
+This is an ideea for a Numismatic album
